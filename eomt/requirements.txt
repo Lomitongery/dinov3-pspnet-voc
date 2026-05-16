@@ -1,0 +1,12 @@
+lightning>=2.0.0
+transformers>=4.38.0
+timm>=1.0.0
+tensorboard
+jsonargparse[signatures]>=4.27.0
+torchmetrics>=1.0.0
+fvcore>=0.1.5
+matplotlib
+scipy
+tqdm
+ipykernel
+pycocotools

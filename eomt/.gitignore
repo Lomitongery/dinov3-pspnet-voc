@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyc
+*.egg-info/
+dist/
+build/
+
+# IDE
+.idea/
+.vscode/
+
+# Lightning
+lightning_logs/
+checkpoints/
+wandb/
+
+# Model weights
+*.pth
+*.ckpt
+*.pt
+
+# Environment
+.env
+venv/
