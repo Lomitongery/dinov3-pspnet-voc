@@ -27,6 +27,7 @@ try:
     import wandb
 except ImportError:
     wandb = None
+from torch.utils.tensorboard import SummaryWriter
 from PIL import Image
 import matplotlib.colors as mcolors
 from matplotlib.lines import Line2D
@@ -598,7 +599,16 @@ class LightningModule(lightning.LightningModule):
 
         block_postfix = self.block_postfix(block_idx)
         name = f"{log_prefix}_pred_{batch_idx}{block_postfix}"
-        self.trainer.logger.experiment.log({name: [wandb.Image(Image.open(buf))]})
+        # Log to the active logger (works for both TensorBoard and wandb)
+        img = Image.open(buf)
+        if isinstance(self.trainer.logger.experiment, SummaryWriter):
+            # TensorBoard: use add_image
+            import torchvision.transforms.functional as TF
+            img_tensor = TF.to_tensor(img)
+            self.trainer.logger.experiment.add_image(name, img_tensor, self.global_step)
+        elif wandb is not None:
+            # wandb: use log
+            self.trainer.logger.experiment.log({name: [wandb.Image(img)]})
 
     @torch.compiler.disable
     def scale_img_size_semantic(self, size: tuple[int, int]):
