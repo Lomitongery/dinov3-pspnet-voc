@@ -23,7 +23,10 @@ from torchmetrics.functional.detection._panoptic_quality_common import (
     _get_color_areas,
     _calculate_iou,
 )
-import wandb
+try:
+    import wandb
+except ImportError:
+    wandb = None
 from PIL import Image
 import matplotlib.colors as mcolors
 from matplotlib.lines import Line2D
