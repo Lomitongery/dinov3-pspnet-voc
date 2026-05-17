@@ -32,13 +32,14 @@ model:
     network:
       class_path: models.eomt.EoMT
       init_args:
-        num_q: 100
+        num_q: 20
         num_blocks: 4
         masked_attn_enabled: True
         encoder:
           class_path: models.vit.ViT
           init_args:
             img_size: [512, 512]
+            patch_size: 16
             backbone_name: "vit_small_patch16_dinov3.lvd1689m"
 data:
   class_path: datasets.voc_semantic.VOCSemantic

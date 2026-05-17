@@ -96,6 +96,8 @@ EoMT 是一个统一架构，三种任务都能做。
 
 ### 3.2 ViT-Adapter
 
+https://zhuanlan.zhihu.com/p/608272954
+
 ViT-Adapter 是 Chen 等人在 2023 年提出的模块，目的是给 ViT 引入 CNN 的归纳偏置和多尺度特征提取能力。
 
 它的工作方式是这样的：

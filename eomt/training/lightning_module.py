@@ -854,6 +854,7 @@ class LightningModule(lightning.LightningModule):
         checkpoint["state_dict"] = {
             k.replace("._orig_mod", ""): v for k, v in checkpoint["state_dict"].items()
         }
+        checkpoint["hyper_parameters"] = {}
 
     def _zero_init_outside_encoder(
         self, encoder_prefix="network.encoder.", skip_class_head=False
